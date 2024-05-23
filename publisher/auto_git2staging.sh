@@ -43,7 +43,7 @@ do
 
   ### upload
   tmpfile=$(mktemp)
-  resp=$(curl -s -w "%{http_code}" -o $tmpfile --trace $tmpfile-trace -X POST -H 'Content-Type: text/turtle' -H 'Accept: application/json' -G --data-urlencode "graph=${graph}" -T ${ttl} ${url})
+  resp=$(curl -v -s -w "%{http_code}" -o $tmpfile --trace $tmpfile-trace -X POST -H 'Content-Type: text/turtle' -H 'Accept: application/json' -G --data-urlencode "graph=${graph}" -T ${ttl} ${url})
   checkCurlCall 204 $resp $tmpfile
 
 done
