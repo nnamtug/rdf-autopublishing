@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Git to Staging Repo
         run: |
-          $GITHUB_WORKSPACE/publisher/auto_git2staging.sh ${{ env.PUBLISHER_ENVIRONMENT}}
+          $GITHUB_WORKSPACE/publisher/auto_git2staging.sh "${{ env.PUBLISHER_ENVIRONMENT}}"
         env:
-          PUBLISHER_ENVIRONMENT: ${{ env.PUBLISHER_ENVIRONMENT }}
+          PUBLISHER_ENVIRONMENT: "${{ env.PUBLISHER_ENVIRONMENT }}"
       - name: Staging to Prod Repo
         run: |
           $GITHUB_WORKSPACE/publisher/auto_staging2prod.sh
