@@ -3,8 +3,8 @@ set -e
 
 #see: https://github.com/<tenant>/<repo>/settings/actions/runners/new?arch=x64&os=linux
 
-GH_RUNNER_VERSION="2.311.0"
-GH_RUNNER_HASH="29fc8cf2dab4c195bb147384e7e2c94cfd4d4022c793b346a6175435265aa278"
+GH_RUNNER_VERSION="2.316.1"
+GH_RUNNER_HASH="d62de2400eeeacd195db91e2ff011bfb646cd5d85545e81d8f78c436183e09a8"
 
 GH_RUNNER_TARFILE="actions-runner-linux-x64-${GH_RUNNER_VERSION}.tar.gz"
 GH_DOWNLOAD_URL="https://github.com/actions/runner/releases/download/v${GH_RUNNER_VERSION}/${GH_RUNNER_TARFILE}"
@@ -85,10 +85,14 @@ launchfile="run-${imagename}.sh"
 cat << EOF >> $launchfile
 sudo docker run \
   --network auto-publisher \
-  --name githubrunner-$imagename \
+  -d \
+  --restart=unless-stopped \
+  --name $runnername \
   $imagename
 EOF
 
 chmod +x $launchfile
+
+echo "to start for: ./${launchfile}"
 
 echo "bye!"
