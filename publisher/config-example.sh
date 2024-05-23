@@ -1,7 +1,7 @@
 typeset -A config
 config=(
   [gitrepo]="https://github.com/nnamtug/rdf-autopublishing"
-  [graphdb]="http://localhost:7200"
+  [graphdb]="http://graphdb-auto-publisher:7200"
   [modelpath]="model"
   [repo_prod]="prod"
   [repo_staging]="staging"

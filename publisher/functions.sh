@@ -1,5 +1,11 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-configfile=$SCRIPT_DIR/config.sh
+if [ -z "${ENV:PUBLISHER_ENVIRONMENT}" ]
+then
+  configfile="${SCRIPT_DIR}/config-${ENV:PUBLISHER_ENVIRONMENT}.sh"
+else
+  configfile=$SCRIPT_DIR/config.sh
+fi
+echo "configfile: '${configfile}'
 
 handle_error() {
     echo "An error occurred on line $1"
