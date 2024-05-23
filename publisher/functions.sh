@@ -52,22 +52,24 @@ verify_config() {
 function checkCurlCall {
   local expectedCode=$1
   local http_code=$2
-  local tempfile=$3
+  local tmpfile=$3
 
-  if [ ! -f $tempfile ] ;
+  echo "tmpfile: ${tmpfile}"
+
+  if [ ! -f $tmpfile ] ;
   then 
-     exit " not a file $tempfile"
+     exit " not a file $tmpfile"
      exit 4
   fi
 
   if [ "$expectedCode" != "$http_code" ];
   then
-    cat $tempfile
-    rm $tempfile
+    cat $tmpfile
+    rm $tmpfile
     echo "FAILED curl call:  expected http_code $expectedCode, but was $http_code"
     exit 3
   fi
-  rm $tempfile
+  rm $tmpfile
 }
 
 
