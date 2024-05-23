@@ -5,7 +5,8 @@ then
 else
   configfile=$SCRIPT_DIR/config.sh
 fi
-echo "configfile: '${configfile}'
+
+echo "configfile: '${configfile}'"
 
 handle_error() {
     echo "An error occurred on line $1"
