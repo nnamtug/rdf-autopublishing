@@ -43,7 +43,6 @@ do
 
   ### upload
   tmpfile=$(mktemp)
-echo plopp
   resp=$(curl -s -w "%{http_code}" -o $tmpfile -X POST -H 'Content-Type: text/turtle' -H 'Accept: application/json' -G --data-urlencode "graph=${graph}" -T ${ttl} ${url})
   checkCurlCall 204 $resp $tmpfile
 
