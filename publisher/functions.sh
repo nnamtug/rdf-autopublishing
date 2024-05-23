@@ -17,6 +17,7 @@ verify_config() {
       # TEST
       #somethingMISSING
       gitrepo
+      graphdb
       modelpath
       repo_prod
       repo_staging
@@ -32,6 +33,26 @@ verify_config() {
       done
 }
 
+function checkCurlCall {
+  local expectedCode=$1
+  local http_code=$2
+  local tempfile=$3
+
+  if [ ! -f $tempfile ] ;
+  then 
+     exit " not a file $tempfile"
+     exit 4
+  fi
+
+  if [ "$expectedCode" != "$http_code" ];
+  then
+    cat $tempfile
+    rm $tempfile
+    echo "FAILED curl call:  expected http_code $expectedCode, but was $http_code"
+    exit 3
+  fi
+  rm $tempfile
+}
 
 
 # TEST
