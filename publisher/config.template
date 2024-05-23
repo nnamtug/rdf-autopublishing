@@ -7,3 +7,10 @@ config=(
   [repo_prod]=
   [repo_staging]=
 )
+
+config_modelfolders=( 
+  [0]="."
+  #[1]="subfolder"
+  #[2]="another/subfolder"
+)
+

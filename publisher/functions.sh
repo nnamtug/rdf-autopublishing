@@ -7,11 +7,21 @@ handle_error() {
 }
 
 verify_config() {
-    echo "known array 'config':"
-    for item in "${!config[@]}";
-     do
-       printf "\t$item\t=>\t${config[$item]} \n"
-     done
+    echo "known array 'config[]':"
+    for item in "${!config[@]}"
+    do
+      printf "\t$item\t=>\t${config[$item]} \n"
+    done
+
+
+    echo "nrOf config_modelfolders: ${#config_modelfolders[@]}"
+    keys=${!config_modelfolders[@]}
+    keys_sorted=$(echo $keys | tr ' ' '\n' | sort | xargs)
+    for key in $keys_sorted
+    do
+      printf "\tconfig_modelfolders[$key]: ${config_modelfolders[$key]} \n"
+    done
+
 
     required_configs=(
       # TEST
@@ -24,13 +34,19 @@ verify_config() {
     )
 
     for c in "${required_configs[@]}" ;
-       do
-         if [ -z "${config[$c]}" ]
-         then
-           echo "ERR: configuration missing: 'config[$c]' expected" >&2
-           exit 2
-         fi
-      done
+    do
+      if [ -z "${config[$c]}" ]
+      then
+        echo "ERR: configuration missing: 'config[$c]' expected" >&2
+        exit 2
+      fi
+    done
+
+  if [ ! "${#config_modelfolders[@]}" -gt "0" ] ;
+  then 
+    echo "config_modelfolders must be an array with at least 1 entry"; 
+    exit 2
+  fi
 }
 
 function checkCurlCall {
