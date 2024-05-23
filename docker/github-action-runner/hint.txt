@@ -1,0 +1,23 @@
+=adding self hosted runners
+https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners
+
+
+---
+
+1. open https://github.com/<tenant>/<repo>/settings/actions/runners/new
+	--> get URL https://github.com/<tenant>/<repository>
+	--> get token BC4....
+
+2. ./build.sh
+	--> get image name
+
+3. sudo docker run -d <imagename>
+
+
+
+---
+not working? debug with:
+  sudo docker run -ti --rm --entrypoint /bin/bash <imagename>
+
+lost in images? find them:
+  sudo docker image list | grep ghrunner
