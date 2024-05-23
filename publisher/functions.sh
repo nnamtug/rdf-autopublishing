@@ -31,6 +31,7 @@ verify_config() {
       modelpath
       repo_prod
       repo_staging
+      graph_prod
     )
 
     for c in "${required_configs[@]}" ;

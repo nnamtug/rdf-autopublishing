@@ -6,6 +6,7 @@ config=(
   [modelpath]=
   [repo_prod]=
   [repo_staging]=
+  [graph_prod]="http://example.org/autoupload"
 )
 
 config_modelfolders=( 
