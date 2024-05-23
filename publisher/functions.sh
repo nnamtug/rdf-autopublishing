@@ -54,7 +54,7 @@ function checkCurlCall {
   local http_code=$2
   local tmpfile=$3
 
-  echo "tmpfile: ${tmpfile}"
+  #echo "tmpfile: ${tmpfile}"
 
   if [ ! -f $tmpfile ] ;
   then 
