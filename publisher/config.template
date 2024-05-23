@@ -10,7 +10,7 @@ config=(
 
 config_modelfolders=( 
   [0]="."
-  #[1]="subfolder"
-  #[2]="another/subfolder"
+  [1]="things"
+  [2]="things/persons"
 )
 
