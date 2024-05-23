@@ -19,4 +19,7 @@ bash ./auto_git2staging.sh
 echo "going to launch ./auto_staging2prod.sh"
 bash ./auto_staging2prod.sh
 
-echo "bye!"
+echo "going to launch ./auto_stagingcleanup.sh"
+bash ./auto_stagingcleanup.sh
+
+echo "outer-bye!"

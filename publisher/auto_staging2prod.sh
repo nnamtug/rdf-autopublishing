@@ -24,13 +24,4 @@ tmpfile=$(mktemp)
 resp=$(curl -s -w "%{http_code}" -o $tmpfile -X POST -H 'Content-Type: application/rdf+xml' -H 'Accept: text/plain' -G --data-urlencode "update=INSERT { graph <${config[graph_prod]}> {?s ?p ?o} } WHERE { service <repository:${config[repo_staging]}> { values ?g { <${graph}> } graph ?g {?s ?p ?o} } }" ${url})
 checkCurlCall 204 $resp $tmpfile
 
-### delete staged graph
-echo "going to delete staged graph <${config[repo_staging]}:${graph}>"
-url="${config[graphdb]}/repositories/${config[repo_staging]}/rdf-graphs/service"
-tmpfile=$(mktemp)
-resp=$(curl -s -w "%{http_code}" -o $tmpfile -X DELETE -H 'Accept: text/plain' -G --data-urlencode "graph=${graph}"  ${url})
-checkCurlCall 204 $resp $tmpfile
-
-
-
 echo "bye!"
