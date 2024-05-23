@@ -1,4 +1,5 @@
-configfile="config.sh"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+configfile=$SCRIPT_DIR/config.sh
 
 handle_error() {
     echo "An error occurred on line $1"
