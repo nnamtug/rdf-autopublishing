@@ -8,3 +8,6 @@
 
 <http://example.org/things/Fork> rdf:type owl:Thing ;
                                      foaf:name "Fork" .
+
+<http://example.org/things/Knive> rdf:type owl:Thing ;
+                                     foaf:name "Knive" .
