@@ -1,0 +1,8 @@
+typeset -A config
+config=(
+  [somekey]="somevalue"
+  [gitrepo]=
+  [modelpath]=
+  [repo_prod]=
+  [repo_staging]=
+)

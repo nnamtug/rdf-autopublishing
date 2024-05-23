@@ -1,0 +1,48 @@
+configfile="config.sh"
+
+handle_error() {
+    echo "An error occurred on line $1"
+    exit 1
+}
+
+verify_config() {
+    echo "known array 'config':"
+    for item in "${!config[@]}";
+     do
+       printf "\t$item\t=>\t${config[$item]} \n"
+     done
+
+    required_configs=(
+      # TEST
+      #somethingMISSING
+      gitrepo
+      modelpath
+      repo_prod
+      repo_staging
+    )
+
+    for c in "${required_configs[@]}" ;
+       do
+         if [ -z "${config[$c]}" ]
+         then
+           echo "ERR: configuration missing: 'config[$c]' expected" >&2
+           exit 2
+         fi
+      done
+}
+
+
+
+# TEST
+#configfile="config-NOT.sh"
+
+# INIT config ----------
+if [ ! -f "${configfile}" ]
+  then
+    echo "ERR: file '${configfile}' missing. did you copy config.template to ${configfile}?" >&2
+    exit 4
+  fi 
+
+source ${configfile}
+verify_config
+
