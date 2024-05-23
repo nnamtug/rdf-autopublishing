@@ -16,7 +16,7 @@ jobs:
         run: |
           $GITHUB_WORKSPACE/publisher/auto_git2staging.sh
         env:
-          PUBLISHER_ENVIRONMENT: $PUBLISHER_ENVIRONMENT
+          PUBLISHER_ENVIRONMENT: ${{ PUBLISHER_ENVIRONMENT }}
       - name: Staging to Prod Repo
         run: |
           $GITHUB_WORKSPACE/publisher/auto_staging2prod.sh
