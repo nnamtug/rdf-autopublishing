@@ -67,10 +67,15 @@ function checkCurlCall {
   then
     cat $tmpfile
     rm $tmpfile
+    if [ -f $tmpfile-trace ];
+    then
+      cat $tmpfile-trace
+      rm $tmpfile-trace
+    fi
     echo "FAILED curl call:  expected http_code $expectedCode, but was $http_code"
     exit 3
   fi
-  rm $tmpfile
+  rm -f $tmpfile $tmpfile-trace
 }
 
 
