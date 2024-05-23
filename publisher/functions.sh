@@ -1,4 +1,5 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+set
 if [ -z "${ENV:PUBLISHER_ENVIRONMENT}" ]
 then
   configfile="${SCRIPT_DIR}/config-${ENV:PUBLISHER_ENVIRONMENT}.sh"
