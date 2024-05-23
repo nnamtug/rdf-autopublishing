@@ -15,10 +15,16 @@ jobs:
       - name: Git to Staging Repo
         run: |
           $GITHUB_WORKSPACE/publisher/auto_git2staging.sh
+        env:
+          PUBLISHER_ENVIRONMENT: ${{ vars.PUBLISHER_ENVIRONMENT }}
       - name: Staging to Prod Repo
         run: |
           $GITHUB_WORKSPACE/publisher/auto_staging2prod.sh
+        env:
+          PUBLISHER_ENVIRONMENT: ${{ vars.PUBLISHER_ENVIRONMENT }}
       - name: Cleanup Staging Repo
         run: |
           $GITHUB_WORKSPACE/publisher/auto_stagingcleanup.sh
+        env:
+          PUBLISHER_ENVIRONMENT: ${{ vars.PUBLISHER_ENVIRONMENT }}
 
