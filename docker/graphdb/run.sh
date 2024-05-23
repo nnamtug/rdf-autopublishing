@@ -5,4 +5,4 @@ sudo docker run \
   -d \
   --restart=unless-stopped \
   -p 7200:7200 \
-  ontotext/graphdb:9.10.2-se
+  ontotext/graphdb:10.6.3
