@@ -1,7 +1,7 @@
 typeset -A config
 config=(
   [somekey]="somevalue"
-  [gitrepo]=
+  [gitrepo]="http://github.com/<user>/<repository>"
   [graphdb]="http://localhost:7200"
   [modelpath]=
   [repo_prod]=
